@@ -156,7 +156,7 @@ public class ClientGUI extends JFrame implements ActionListener
              if(e.getSource() == downloadButton)
             {
               // functions for upload from search ip
-              JFrame f = new JFrame("Download");  
+                            JFrame f = new JFrame("Download");  
               f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
               f.setSize(500, 500);
               f.setVisible(true);
@@ -164,15 +164,23 @@ public class ClientGUI extends JFrame implements ActionListener
               textPanel.setLayout(null);
               textPanel.setLocation(0, 0);
               textPanel.setSize(200, 200);
-              text = new JLabel("server information" /*servername*/);
+              text = new JLabel("server search" ,JLabel.RIGHT);
               text.setLocation(0, 0);
               text.setSize(120, 50);
               text.setHorizontalAlignment(0);
               text.setForeground(Color.black);           
               textPanel.add(text);
               textPanel.add(downButton);
-              f.add(textPanel);
-              // functions for download from a search ip
+              
+                            //fix checkbox  
+              final JTextField userText = new JTextField(6);
+              userText.setSize(100,50);
+              userText.setLocation(0,300);
+              JButton loginButton = new JButton("Search");
+              textPanel.add(userText); 
+              loginButton.addActionListener(new ActionListener() {
+              public void actionPerformed(ActionEvent e) {     
+             //functions
             }
              if(e.getSource() == downButton)
               {
