@@ -40,7 +40,7 @@ public class Server {
             HttpURLConnection conn
                 = (HttpURLConnection) new URL("http://"
                     + MAIN_SERVER_IP + ":" + MAIN_SERVER_PORT
-                    + "/servers/servers/?" + data)
+                    + "/servers/update/?" + data)
                         .openConnection();
             
             conn.setInstanceFollowRedirects(false);

@@ -4,8 +4,9 @@ import javax.swing.*;
 import java.awt.event.ActionListener;
 
 // makes frame content
-public class take2 extends JFrame implements ActionListener
+public class ClientGUI extends JFrame implements ActionListener
 {
+    private ClientData clientData = ClientData.getClientData();
     int x = 0;
     int y = 0;
     JPanel titlePanel, textPanel;
@@ -40,9 +41,14 @@ public class take2 extends JFrame implements ActionListener
                 downButton.addActionListener(this);
                 firstPage.add(titlePanel);
                
-                for (int i =0; i <10; i++)
+                for (int i =0; i < 10; i++)
                     {
-                        //  final ServerData currentServer = serverData[i];
+                        final ServerData currentServer = clientData.getServer(i);
+                        
+                        if (currentServer == null) {
+                            break;
+                        }
+                        
                         final JButton currentUpButton = new JButton("upload");
                         currentUpButton.setLocation(x, y);
                         currentUpButton.setSize(120, 30);
@@ -56,7 +62,7 @@ public class take2 extends JFrame implements ActionListener
                              textPanel.setLayout(null);
                              textPanel.setLocation(0, 0);
                              textPanel.setSize(200, 200);
-                             text = new JLabel("server information" /*servername*/);
+                             text = new JLabel("server information: " + currentServer.getName());
                              text.setLocation(0, 0);
                              text.setSize(120, 50);
                              text.setHorizontalAlignment(0);
@@ -181,7 +187,7 @@ public class take2 extends JFrame implements ActionListener
         JFrame.setDefaultLookAndFeelDecorated(true);
         JFrame frame = new JFrame("Free File Sharing");
         //Create and set up the content pane.
-        take2 demo = new take2();
+        ClientGUI demo = new ClientGUI();
         frame.setContentPane(demo.createContentPane());
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(500, 500);

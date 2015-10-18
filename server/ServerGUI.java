@@ -3,20 +3,20 @@ import java.awt.event.*;
 import javax.swing.*;
 
  
-public class take4 {
+public class ServerGUI {
     
    private JFrame mainFrame;
    private JLabel headerLabel;
    private JLabel statusLabel;
    private JPanel controlPanel;
 
-   public take4(){
+   public ServerGUI(){
       prepareGUI();
    }
 
    public static void main(String[] args){
-      take4  take40 = new take4();      
-      take40.take4();
+      ServerGUI  ServerGUI0 = new ServerGUI();      
+      ServerGUI0.ServerGUI();
    }
 
    private void prepareGUI(){
@@ -42,7 +42,7 @@ public class take4 {
       mainFrame.setVisible(true);  
    }
 
-   private void take4(){
+   private void ServerGUI(){
       headerLabel.setText("Free File Sharing"); 
 
       JLabel  namelabel= new JLabel("Port (Only enter Integers) ", JLabel.RIGHT);
