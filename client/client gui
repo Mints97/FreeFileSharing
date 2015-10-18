@@ -1,0 +1,203 @@
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+import java.awt.event.ActionListener;
+
+// makes frame content
+public class take2 extends JFrame implements ActionListener
+{
+    int x = 0;
+    int y = 0;
+    JPanel titlePanel, textPanel;
+    JButton uploadButton, downloadButton, downButton, upButton; 
+    JLabel serverLabel, text;
+   // JCheckBox checkBox;
+        public JPanel createContentPane ()
+            {   
+                JPanel firstPage = new JPanel();
+                firstPage.setLayout(null);
+                titlePanel = new JPanel();
+                titlePanel.setLayout(null);
+                titlePanel.setLocation(0, 0);
+                titlePanel.setSize(500, 500);              
+                uploadButton = new JButton("Search Upload");
+                uploadButton.setLocation(0, 400);
+                uploadButton.setSize(120, 30);
+                uploadButton.addActionListener(this);
+                titlePanel.add(uploadButton);
+                downloadButton = new JButton("Search Download");
+                downloadButton.setLocation(130, 400);
+                downloadButton.setSize(200, 30);
+                downloadButton.addActionListener(this);
+                titlePanel.add(downloadButton); 
+                upButton = new JButton("Upload Now");
+                upButton.setLocation(0, 400);
+                upButton.setSize(120, 30);
+                upButton.addActionListener(this);
+                downButton = new JButton("Download Now");
+                downButton.setLocation(0, 400);
+                downButton.setSize(120, 30);
+                downButton.addActionListener(this);
+                firstPage.add(titlePanel);
+               
+                for (int i =0; i <10; i++)
+                    {
+                        //  final ServerData currentServer = serverData[i];
+                        final JButton currentUpButton = new JButton("upload");
+                        currentUpButton.setLocation(x, y);
+                        currentUpButton.setSize(120, 30);
+                        currentUpButton.addActionListener(new ActionListener(){
+                          public void actionPerformed(ActionEvent e){
+                             JFrame f = new JFrame("Upload");  
+                             f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                             f.setSize(500, 500);
+                             f.setVisible(true);
+                             textPanel = new JPanel();
+                             textPanel.setLayout(null);
+                             textPanel.setLocation(0, 0);
+                             textPanel.setSize(200, 200);
+                             text = new JLabel("server information" /*servername*/);
+                             text.setLocation(0, 0);
+                             text.setSize(120, 50);
+                             text.setHorizontalAlignment(0);
+                             text.setForeground(Color.black);
+                           //  JCheckBox checkBox = new JCheckBox("Encrypt");
+                           //  checkBox.setLocation(200,200);
+                           //  checkBox.setSize(120,50);
+                           //  textPanel.add(checkBox);
+                             textPanel.add(upButton);             
+                             textPanel.add(text);
+                             f.add(textPanel);
+                          }});
+                        titlePanel.add(currentUpButton);
+                        x=x+120;
+                        //download buttons
+                        JButton currentDownButton = new JButton("Download");
+                        currentDownButton.setLocation(x, y);
+                        currentDownButton.setSize(120, 30);
+                        titlePanel.add(currentDownButton);
+                        currentDownButton.addActionListener(new ActionListener(){
+                          public void actionPerformed(ActionEvent e){
+                             JFrame f = new JFrame("Download");  
+                             f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                             f.setSize(500, 500);
+                             f.setVisible(true);
+                             textPanel = new JPanel();
+                             textPanel.setLayout(null);
+                             textPanel.setLocation(0, 0);
+                             textPanel.setSize(200, 200);
+                             text = new JLabel("server information" /*servername*/);
+                             text.setLocation(0, 0);
+                             text.setSize(120, 50);
+                             text.setHorizontalAlignment(0);
+                             text.setForeground(Color.black);
+                           //  JCheckBox checkBox = new JCheckBox("Encrypt");
+                           //  checkBox.setLocation(200,200);
+                           //  checkBox.setSize(120,50);
+                           //  textPanel.add(checkBox);
+                             textPanel.add(downButton);             
+                             textPanel.add(text);
+                             f.add(textPanel);
+                          }});
+                        x=240;
+                        serverLabel = new JLabel("server" /*server label here*/);
+                        serverLabel.setLocation(x, y);
+                        serverLabel.setSize(120, 30);
+                        serverLabel.setHorizontalAlignment(0);
+                        serverLabel.setForeground(Color.red);
+                        titlePanel.add(serverLabel);
+                        x=0;
+                        y=y+30;       
+                   }
+                        firstPage.setOpaque(true);
+                        return firstPage;
+                }        
+    //Events for Upload and Download   
+    public void actionPerformed(ActionEvent e)
+        { 
+            if(e.getSource() == uploadButton)
+            {
+              // functions for upload from search ip
+              JFrame f = new JFrame("Upload");  
+              f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);           
+              f.setSize(500, 500);
+              f.setVisible(true);
+              textPanel = new JPanel();
+              textPanel.setLayout(null);
+              textPanel.setLocation(0, 0);
+              textPanel.setSize(500, 500);
+              text = new JLabel("server information" /*servername*/);
+              text.setLocation(0, 0);
+              text.setSize(120, 50);
+            //  checkBox = new JCheckBox("Encrypt");
+            //  checkBox.setLocation(200,200);
+            //  checkBox.setSize(120,50);
+              text.setHorizontalAlignment(0);
+              text.setForeground(Color.black);
+              //fix checkbox  
+
+              textPanel.add(upButton);    
+             // textPanel.add(checkBox);         
+              textPanel.add(text);
+              f.add(textPanel);
+           }
+            if(e.getSource() == upButton)
+              {
+                 JOptionPane.showMessageDialog(null,"Uploaded!\nIP Adress: " + /*get ip address */ "\nPort:" +/* get port */ "\nKey: " /*get key*/ ,"Status", JOptionPane.PLAIN_MESSAGE);
+                 setVisible(true);
+                    // functions for upload
+              }     
+             if(e.getSource() == downloadButton)
+            {
+              // functions for upload from search ip
+              JFrame f = new JFrame("Download");  
+              f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+              f.setSize(500, 500);
+              f.setVisible(true);
+              textPanel = new JPanel();
+              textPanel.setLayout(null);
+              textPanel.setLocation(0, 0);
+              textPanel.setSize(200, 200);
+              text = new JLabel("server information" /*servername*/);
+              text.setLocation(0, 0);
+              text.setSize(120, 50);
+              text.setHorizontalAlignment(0);
+              text.setForeground(Color.black);           
+              textPanel.add(text);
+              textPanel.add(downButton);
+              f.add(textPanel);
+              // functions for download from a search ip
+            }
+             if(e.getSource() == downButton)
+              {
+                 JOptionPane.showMessageDialog(null,"Downloaded!\nIP Adress: " + /*get ip address */ "\nPort:" +/* get port */ "\nKey: " /*get key*/ ,"Status", JOptionPane.PLAIN_MESSAGE);
+                 setVisible(true);
+                    // functions for upload
+              }  
+      }
+//Makes Frame
+    private static void createAndShowGUI() 
+      {
+        JFrame.setDefaultLookAndFeelDecorated(true);
+        JFrame frame = new JFrame("Free File Sharing");
+        //Create and set up the content pane.
+        take2 demo = new take2();
+        frame.setContentPane(demo.createContentPane());
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(500, 500);
+        frame.setVisible(true);
+      }
+//run and show frame
+    public static void main(String[] args) 
+      {
+        SwingUtilities.invokeLater(new Runnable()
+             {
+                 public void run() 
+                     {
+                       createAndShowGUI();
+                     }
+             });
+      }  
+}
+
+    
