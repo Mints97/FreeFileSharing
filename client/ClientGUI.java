@@ -148,7 +148,7 @@ public class ClientGUI extends JFrame implements ActionListener
               porttext.setSize(120, 50);
               
                 
-              JLabel fileidtext = new JLabel("enter file id" ,JLabel.RIGHT);
+              JLabel fileidtext = new JLabel("enter ip" ,JLabel.RIGHT);
               fileidtext.setLocation(200, 400);
               fileidtext.setSize(120, 50);
               
