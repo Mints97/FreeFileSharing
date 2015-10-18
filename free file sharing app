@@ -11,6 +11,7 @@ public class take2 extends JFrame implements ActionListener
     JPanel titlePanel, textPanel;
     JButton uploadButton, downloadButton, downButton, upButton; 
     JLabel serverLabel, text;
+   // JCheckBox checkBox;
         public JPanel createContentPane ()
             {   
                 JPanel firstPage = new JPanel();
@@ -60,9 +61,10 @@ public class take2 extends JFrame implements ActionListener
                              text.setSize(120, 50);
                              text.setHorizontalAlignment(0);
                              text.setForeground(Color.black);
-                             //fix checkbox 
-                             JCheckBox checkBox = new JCheckBox("Encrypt");  
-                             textPanel.add(checkBox);
+                           //  JCheckBox checkBox = new JCheckBox("Encrypt");
+                           //  checkBox.setLocation(200,200);
+                           //  checkBox.setSize(120,50);
+                           //  textPanel.add(checkBox);
                              textPanel.add(upButton);             
                              textPanel.add(text);
                              f.add(textPanel);
@@ -83,12 +85,19 @@ public class take2 extends JFrame implements ActionListener
                              textPanel = new JPanel();
                              textPanel.setLayout(null);
                              textPanel.setLocation(0, 0);
-                             textPanel.setSize(500, 500);
+                             textPanel.setSize(200, 200);
                              text = new JLabel("server information" /*servername*/);
                              text.setLocation(0, 0);
                              text.setSize(120, 50);
                              text.setHorizontalAlignment(0);
                              text.setForeground(Color.black);
+                           //  JCheckBox checkBox = new JCheckBox("Encrypt");
+                           //  checkBox.setLocation(200,200);
+                           //  checkBox.setSize(120,50);
+                           //  textPanel.add(checkBox);
+                             textPanel.add(downButton);             
+                             textPanel.add(text);
+                             f.add(textPanel);
                           }});
                         x=240;
                         serverLabel = new JLabel("server" /*server label here*/);
@@ -114,16 +123,21 @@ public class take2 extends JFrame implements ActionListener
               f.setSize(500, 500);
               f.setVisible(true);
               textPanel = new JPanel();
-              textPanel.setLayout(new BorderLayout());
+              textPanel.setLayout(null);
               textPanel.setLocation(0, 0);
               textPanel.setSize(500, 500);
               text = new JLabel("server information" /*servername*/);
+              text.setLocation(0, 0);
+              text.setSize(120, 50);
+            //  checkBox = new JCheckBox("Encrypt");
+            //  checkBox.setLocation(200,200);
+            //  checkBox.setSize(120,50);
               text.setHorizontalAlignment(0);
               text.setForeground(Color.black);
               //fix checkbox  
-              JCheckBox checkBox = new JCheckBox("Encrypt"); 
-              textPanel.add(checkBox);
-              textPanel.add(upButton);             
+
+              textPanel.add(upButton);    
+             // textPanel.add(checkBox);         
               textPanel.add(text);
               f.add(textPanel);
            }
