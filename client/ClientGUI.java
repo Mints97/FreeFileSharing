@@ -206,7 +206,61 @@ public class ClientGUI extends JFrame implements ActionListener
               textPanel.add(fileidtext);
               
               loginButton.addActionListener(new ActionListener() {
-              public void actionPerformed(ActionEvent e) {
+              public void actionPerformed(ActionEvent e) {   if(e.getSource() == downloadButton)
+            {
+              // functions for upload from search ip
+              JFrame f = new JFrame("Download");  
+              f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+              f.setSize(500, 500);
+              f.setVisible(true);
+              textPanel = new JPanel();
+              textPanel.setLayout(null);
+              textPanel.setLocation(0, 0);
+              textPanel.setSize(200, 200);
+              text = new JLabel("server search" ,JLabel.RIGHT);
+              text.setLocation(0, 0);
+              text.setSize(120, 50);
+              text.setHorizontalAlignment(0);
+              text.setForeground(Color.black);           
+              textPanel.add(text);
+              
+              
+              JLabel iptext = new JLabel("enter ip:" ,JLabel.RIGHT);
+              iptext.setLocation(200, 350);
+              iptext.setSize(120, 50);
+              
+
+              JLabel porttext = new JLabel("enter port" ,JLabel.RIGHT);
+              porttext.setLocation(200, 300);
+              porttext.setSize(120, 50);
+              
+                
+              JLabel fileidtext = new JLabel("enter file id" ,JLabel.RIGHT);
+              fileidtext.setLocation(200, 400);
+              fileidtext.setSize(120, 50);
+              
+                            //fix checkbox  
+              final JTextField ip = new JTextField(10);
+              final JTextField port = new JTextField(10);
+              final JTextField fileid = new JTextField(10);
+              port.setSize(200,50);
+              port.setLocation(0,300);
+              ip.setSize(200,50);
+              ip.setLocation(0,350);
+              fileid.setSize(200,50);
+              fileid.setLocation(0,400);
+              
+              downButton.setLocation(0,100);
+              textPanel.add(downButton);
+              textPanel.add(ip);
+              textPanel.add(port);
+              textPanel.add(fileid);
+              textPanel.add(iptext);
+              textPanel.add(porttext);
+              textPanel.add(fileidtext);
+
+              f.add(textPanel);
+              // functions for download from a search ip
             }
              if(e.getSource() == downButton)
               {
