@@ -2,11 +2,13 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import java.awt.event.ActionListener;
+import java.io.*;
 
 // makes frame content
 public class ClientGUI extends JFrame implements ActionListener
 {
     private ClientData clientData = ClientData.getClientData();
+    private JTextField port, ip, fileid, _port, _ip, _fileid;
     int x = 0;
     int y = 0;
     JPanel titlePanel, textPanel;
@@ -154,8 +156,8 @@ public class ClientGUI extends JFrame implements ActionListener
               
                             //fix checkbox  
               
-              final JTextField port = new JTextField(10);
-              final JTextField fileid = new JTextField(10);
+             port = new JTextField(10);
+              fileid = new JTextField(10);
               port.setSize(200,50);
               port.setLocation(0,300);
               
@@ -172,19 +174,35 @@ public class ClientGUI extends JFrame implements ActionListener
               textPanel.add(fileidtext);
 
               f.add(textPanel);
+            }
               // functions for download from a search ip
-              
-           }
-            if(e.getSource() == upButton)
+              if(e.getSource() == upButton)
               {
-                 JOptionPane.showMessageDialog(null,"Uploaded!\nIP Adress: " + /*get ip address */ "\nPort:" +/* get port */ "\nKey: " /*get key*/ ,"Status", JOptionPane.PLAIN_MESSAGE);
+                  String fileID = "";
+                  JFileChooser fileChooser = new JFileChooser();
+                    if (fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
+                      File file = fileChooser.getSelectedFile();
+                      try {
+                      fileID = ClientData.uploadFile(file,
+                          new ServerData("",
+                              fileid.getText(),
+                              Integer.parseInt(port.getText()), true, 10000000000000L, 100));
+                      } catch (Exception exc) {
+                          JOptionPane.showMessageDialog(null,"Something is very wrong!");
+                          exc.printStackTrace();
+                      }
+                 JOptionPane.showMessageDialog(null,"Uploaded!\nFile ID: " + fileID);
                  setVisible(true);
+                    }
                     // functions for upload
-              }     
+              }
+           
+                 
              if(e.getSource() == downloadButton)
             {
+                
               // functions for upload from search ip
-                            JFrame f = new JFrame("Download");  
+                            JFrame f = new JFrame("download");  
               f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
               f.setSize(500, 500);
               f.setVisible(true);
@@ -214,88 +232,44 @@ public class ClientGUI extends JFrame implements ActionListener
               fileidtext.setSize(120, 50);
               
                             //fix checkbox  
-              final JTextField ip = new JTextField(10);
-              final JTextField port = new JTextField(10);
-              final JTextField fileid = new JTextField(10);
-              port.setSize(200,50);
-              port.setLocation(0,300);
-              ip.setSize(200,50);
-              ip.setLocation(0,350);
-              fileid.setSize(200,50);
-              fileid.setLocation(0,400);
+              _ip = new JTextField(10);
+              _port = new JTextField(10);
+              _fileid = new JTextField(10);
+              _port.setSize(200,50);
+              _port.setLocation(0,300);
+              _ip.setSize(200,50);
+              _ip.setLocation(0,350);
+              _fileid.setSize(200,50);
+              _fileid.setLocation(0,400);
               JButton loginButton = new JButton("Search");
-              loginButton.setLocation(100,100);
-              textPanel.add(loginButton);
-              textPanel.add(ip);
-              textPanel.add(port);
-              textPanel.add(fileid);
-              textPanel.add(iptext);
-              textPanel.add(porttext);
-              textPanel.add(fileidtext);
-              
-              loginButton.addActionListener(new ActionListener() {
-              public void actionPerformed(ActionEvent e) {   if(e.getSource() == downloadButton)
-            {
-              // functions for upload from search ip
-              JFrame f = new JFrame("Download");  
-              f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-              f.setSize(500, 500);
-              f.setVisible(true);
-              textPanel = new JPanel();
-              textPanel.setLayout(null);
-              textPanel.setLocation(0, 0);
-              textPanel.setSize(200, 200);
-              text = new JLabel("server search" ,JLabel.RIGHT);
-              text.setLocation(0, 0);
-              text.setSize(120, 50);
-              text.setHorizontalAlignment(0);
-              text.setForeground(Color.black);           
-              textPanel.add(text);
-              
-              
-              JLabel iptext = new JLabel("enter ip:" ,JLabel.RIGHT);
-              iptext.setLocation(200, 350);
-              iptext.setSize(120, 50);
-              
-
-              JLabel porttext = new JLabel("enter port" ,JLabel.RIGHT);
-              porttext.setLocation(200, 300);
-              porttext.setSize(120, 50);
-              
-                
-              JLabel fileidtext = new JLabel("enter file id" ,JLabel.RIGHT);
-              fileidtext.setLocation(200, 400);
-              fileidtext.setSize(120, 50);
-              
-                            //fix checkbox  
-              final JTextField ip = new JTextField(10);
-              final JTextField port = new JTextField(10);
-              final JTextField fileid = new JTextField(10);
-              port.setSize(200,50);
-              port.setLocation(0,300);
-              ip.setSize(200,50);
-              ip.setLocation(0,350);
-              fileid.setSize(200,50);
-              fileid.setLocation(0,400);
-              
-              downButton.setLocation(0,100);
+              downButton.setLocation(100,100);
               textPanel.add(downButton);
-              textPanel.add(ip);
-              textPanel.add(port);
-              textPanel.add(fileid);
+              textPanel.add(_ip);
+              textPanel.add(_port);
+              textPanel.add(_fileid);
               textPanel.add(iptext);
               textPanel.add(porttext);
               textPanel.add(fileidtext);
-
               f.add(textPanel);
-              // functions for download from a search ip
+              
             }
-             if(e.getSource() == downButton)
+            if(e.getSource() == downButton)
               {
+                  JFileChooser fileChooser = new JFileChooser();
+                    if (fileChooser.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
+                      File file = fileChooser.getSelectedFile();
+                      try {
+                      ClientData.downloadFile(file, _fileid.getText(), new ServerData("", _ip.getText(), Integer.parseInt(_port.getText()), true, 10000000000000L, 100));
+                        } catch (Exception exc) {
+                          JOptionPane.showMessageDialog(null,"Something is very wrong!");
+                      }
+                    }
                  JOptionPane.showMessageDialog(null,"Downloaded!\nIP Adress: " + /*get ip address */ "\nPort:" +/* get port */ "\nKey: " /*get key*/ ,"Status", JOptionPane.PLAIN_MESSAGE);
                  setVisible(true);
                     // functions for upload
               }  
+              
+            
       }
 //Makes Frame
     private static void createAndShowGUI() 
@@ -321,5 +295,3 @@ public class ClientGUI extends JFrame implements ActionListener
              });
       }  
 }
-
-    
