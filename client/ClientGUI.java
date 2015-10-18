@@ -170,17 +170,43 @@ public class ClientGUI extends JFrame implements ActionListener
               text.setHorizontalAlignment(0);
               text.setForeground(Color.black);           
               textPanel.add(text);
-              textPanel.add(downButton);
+              
+              JLabel iptext = new JLabel("enter ip:" ,JLabel.RIGHT);
+              iptext.setLocation(200, 350);
+              iptext.setSize(120, 50);
+              
+
+              JLabel porttext = new JLabel("enter port" ,JLabel.RIGHT);
+              porttext.setLocation(200, 300);
+              porttext.setSize(120, 50);
+              
+                
+              JLabel fileidtext = new JLabel("enter file id" ,JLabel.RIGHT);
+              fileidtext.setLocation(200, 400);
+              fileidtext.setSize(120, 50);
               
                             //fix checkbox  
-              final JTextField userText = new JTextField(6);
-              userText.setSize(100,50);
-              userText.setLocation(0,300);
+              final JTextField ip = new JTextField(10);
+              final JTextField port = new JTextField(10);
+              final JTextField fileid = new JTextField(10);
+              port.setSize(200,50);
+              port.setLocation(0,300);
+              ip.setSize(200,50);
+              ip.setLocation(0,350);
+              fileid.setSize(200,50);
+              fileid.setLocation(0,400);
               JButton loginButton = new JButton("Search");
-              textPanel.add(userText); 
+              loginButton.setLocation(100,100);
+              textPanel.add(loginButton);
+              textPanel.add(ip);
+              textPanel.add(port);
+              textPanel.add(fileid);
+              textPanel.add(iptext);
+              textPanel.add(porttext);
+              textPanel.add(fileidtext);
+              
               loginButton.addActionListener(new ActionListener() {
-              public void actionPerformed(ActionEvent e) {     
-             //functions
+              public void actionPerformed(ActionEvent e) {
             }
              if(e.getSource() == downButton)
               {
