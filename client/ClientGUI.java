@@ -140,9 +140,7 @@ public class ClientGUI extends JFrame implements ActionListener
               textPanel.add(text);
               
               
-              JLabel iptext = new JLabel("enter ip:" ,JLabel.RIGHT);
-              iptext.setLocation(200, 350);
-              iptext.setSize(120, 50);
+             
               
 
               JLabel porttext = new JLabel("enter port" ,JLabel.RIGHT);
@@ -155,22 +153,21 @@ public class ClientGUI extends JFrame implements ActionListener
               fileidtext.setSize(120, 50);
               
                             //fix checkbox  
-              final JTextField ip = new JTextField(10);
+              
               final JTextField port = new JTextField(10);
               final JTextField fileid = new JTextField(10);
               port.setSize(200,50);
               port.setLocation(0,300);
-              ip.setSize(200,50);
-              ip.setLocation(0,350);
+              
               fileid.setSize(200,50);
               fileid.setLocation(0,400);
               
               upButton.setLocation(0,100);
               textPanel.add(upButton);
-              textPanel.add(ip);
+              
               textPanel.add(port);
               textPanel.add(fileid);
-              textPanel.add(iptext);
+              
               textPanel.add(porttext);
               textPanel.add(fileidtext);
 
